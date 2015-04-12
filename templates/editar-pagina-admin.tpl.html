@@ -1,0 +1,304 @@
+{extends file="base-admin.tpl.html"}
+
+{block name="body"}
+
+    <div class="overlay-seleccion-tema">
+        <section id="contenedor-lista-temas" class="container" expandir="0">
+            <h1>Lista de temas</h1>
+
+            <div class="wrapper-lista-temas">
+                <div class="tema clearfix">
+                    <img class="imagen-tema" src="http://localhost/OOSHack/public/img/temas/galaxy.jpg">
+                    <div class="contenido-tema">
+                        <h3>Galaxy</h3>
+                        <p>Un tema minimalista y moderno</p>
+                        <a href="#" class="btn-success boton-cambiar-tema" tema_id="0" nombre-tema="Galaxy">Seleccionar (5% más de Comisión por venta)</a>
+                    </div>
+                </div>
+
+                <div class="tema clearfix">
+                    <img class="imagen-tema" src="http://localhost/OOSHack/public/img/temas/coffea.jpg">
+                    <div class="contenido-tema">
+                        <h3>Coffea Robusta</h3>
+                        <p>Un tema exclusivo para amantes del café, y para aquellos que aprecían el buen gusto</p>
+                        <a href="#" class="btn-success boton-cambiar-tema" tema_id="1" nombre-tema="Coffea Robusta">Seleccionar (Gratuito)</a>
+                    </div>
+                </div>
+
+            </div>
+            <a href="#" class="btn-error btn-big boton-cerrar-lista-temas">Cerrar</a>
+        </section>
+    </div>
+
+
+    <div class="container-titulo">
+        <h1>Crear Descripción de artículo</h1>
+        <p>Crea modulos de contenidos y edita su información seleccionado el boton agregar. Elegí el tema con que verás la descripción</p>
+        <a href="#" class="btn-primario btn-big boton-seleccionar-tema">Seleccionar tema</a>
+        <p class="tema-seleccionado"></p>
+    </div>
+
+
+    <form id="form-componentes-descripcion" method="POST" action="ProcesarEditarDescripcion.php" enctype='multipart/form-data'>
+        <div class="componentes-descripcion">
+
+        </div>
+
+        <input type="hidden" class='input-tema' name="tema" value="0">
+        <input type="hidden" class='input-id' name="id_articulo" value="{$idarticulo}">
+        <input type="hidden" class='input-id' name="id_vendedor" value="{$idvendedor}">
+
+        <a href="#" class="boton-mostrar-agregar-componente"><i class="fa fa-plus icono"></i></a>
+        <div class="selector-componentes">
+            <div class="lista-componentes">
+                <h2>Seleccione un componente</h2>
+                <div class="clearfix">
+                    <div class="wrapper-componente">
+                        <a href="#" class="boton-agregar-componente componente-modulo-doble-imagen">
+                            <img class="img-componente" src="http://localhost/OOSHack/public/img/iconos-editar-pagina/modulo-doble-imagen.jpg">
+                        </a>
+                    </div>
+
+                    <div class="wrapper-componente">
+                        <a href="#" class="boton-agregar-componente componente-modulo-texto">
+                            <img class="img-componente" src="http://localhost/OOSHack/public/img/iconos-editar-pagina/modulo-texto.jpg">
+                        </a>
+                    </div>
+
+                    <div class="wrapper-componente">
+                        <a href="#" class="boton-agregar-componente componente-modulo-triple-imagen">
+                            <img class="img-componente" src="http://localhost/OOSHack/public/img/iconos-editar-pagina/modulo-triple-imagen.jpg">
+                        </a>
+                    </div>
+
+                    <div class="wrapper-componente">
+                        <a href="#" class="boton-agregar-componente componente-modulo-header">
+                            <img class="img-componente" src="http://localhost/OOSHack/public/img/iconos-editar-pagina/modulo-header.jpg">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container-titulo">
+            <a href="#" class="btn-error btn-big">Cancelar</a>
+            <button type="submit" class="btn-primario btn-big">Guardar Cambios</button>
+        </div>
+
+    </form>
+
+
+    <div class="fix-end"></div>
+
+
+{/block}
+
+
+{block name="footer" append}
+    <script>
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var backgroundImage = 'url(' + e.target.result + ') no-repeat cover';
+                    $('.wrapper-imagen[id_wrapper="' + $(input).attr('id_wrapper') + '"] .imagen-fondo').attr('src', e.target.result);
+                    $('.wrapper-imagen[id_wrapper="' + $(input).attr('id_wrapper') + '"] .icono-imagen').hide();
+                    $('.wrapper-imagen[id_wrapper="' + $(input).attr('id_wrapper') + '"] .wrapper-imagen-fondo').show();
+                };
+
+                /*
+                 .attr('src', e.target.result)
+                 .width(150);
+                 */
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $(document).ready(inicializar);
+
+        var contadorModulos = 0;
+
+        function inicializar() {
+            mostrarAgregarComponenteListener();
+            agregarComponenteListener();
+            abrirListaTemasListener();
+            cambiarTemaListener();
+        }
+
+        function cambiarTemaListener() {
+            $('.boton-cambiar-tema').click(function(e) {
+                e.preventDefault();
+                $('.input-tema').val($(this).attr('tema_id'));
+                $(".overlay-seleccion-tema").hide();
+                $('.tema-seleccionado').text('El tema seleccionado es '+ $(this).attr('nombre-tema') );
+            });
+        }
+
+        function abrirListaTemasListener()
+        {
+            $('.boton-seleccionar-tema').on("click", function(e) {
+                e.preventDefault();
+                $(".overlay-seleccion-tema").show();
+            });
+            $('.boton-cerrar-lista-temas').on('click', function(e) {
+                e.preventDefault();
+                $(".overlay-seleccion-tema").hide();
+            });
+        }
+
+        function mostrarAgregarComponenteListener() {
+            $('.boton-mostrar-agregar-componente').click(function(e) {
+                e.preventDefault();
+                toggleAgregarComponente();
+            });
+        }
+
+        function toggleAgregarComponente() {
+            if($('.selector-componentes').css('display') == 'none') {
+                $('.selector-componentes').show();
+            } else {
+                $('.selector-componentes').hide();
+            }
+
+        }
+
+        function agregarComponenteListener() {
+            $('.boton-agregar-componente').click(function(e) {
+                e.preventDefault();
+                agregarComponente(this);
+            })
+        }
+
+        function agregarComponente(boton) {
+            if($(boton).hasClass('componente-modulo-doble-imagen')) {
+                agregarModuloDobleImagen();
+            }
+            if($(boton).hasClass('componente-modulo-texto')) {
+                agregarModuloTexto();
+            }
+
+            if($(boton).hasClass('componente-modulo-triple-imagen')) {
+                agregarModuloTripleImagen();
+            }
+
+            if($(boton).hasClass('componente-modulo-header')) {
+                agregarModuloHeader();
+            }
+            toggleAgregarComponente();
+        }
+
+
+        function agregarModuloHeader() {
+            contadorModulos++;
+            $('#form-componentes-descripcion .componentes-descripcion').append(
+                    ' <div class="container-modulo modulo-unitario-texto"> ' +
+                    '<p>Modulo de encabezado</p>' +
+                    '   <input class="input-editar-pagina titulo" placeholder="Título" name="moduloHeader-texto1-id' + contadorModulos + '">' +
+                    '    <textarea class="input-editar-pagina textarea parrafo" placeholder="Párrafo" rows="5" name="moduloHeader-texto2-id' + contadorModulos + '"></textarea> ' +
+                    '</div>'
+            );
+        }
+
+
+
+        function agregarModuloDobleImagen() {
+            contadorModulos++;
+            $('#form-componentes-descripcion .componentes-descripcion').append(
+                ' <div class="container-modulo modulo-doble-imagen"> ' +
+                '    <div class="wrapper-modulos clearfix"> ' +
+                '        <div class="modulo modulo-imagen"> ' +
+                         '<div class="wrapper-imagen" id_wrapper="'+ contadorModulos +'">' +
+            '<i class="fa fa-photo icono-imagen"></i>' +
+            '<div class="wrapper-imagen-fondo"><img class="imagen-fondo"></div>' +
+            '<div class="contenedor-input-imagen btn-primario boton-cambiar-imagen">'+
+            '<label class="myui-button">'+
+            '<span >Seleccionar Imágen</span>'+
+            '<input class="file input-file" type="file" name="moduloDobleImagen-img1-id' + contadorModulos + '" onchange="readURL(this);" id_wrapper="' + contadorModulos + '">' +
+            '</label>' +
+            '</div>' +
+            '</div>' +
+                '        </div> ' +
+                '       <div class="modulo modulo-texto"> ' +
+                '           <input class="input-editar-pagina titulo" placeholder="Título" name="moduloDoble-texto1-id' + contadorModulos + '">' +
+                '           <textarea class="input-editar-pagina textarea parrafo" placeholder="Párrafo" rows="5" name="moduloDoble-texto2-id' + contadorModulos + '"></textarea> ' +
+                '       </div> ' +
+                '   </div>' +
+                '</div> '
+            );
+        }
+
+        function agregarModuloTexto() {
+            contadorModulos++;
+            $('#form-componentes-descripcion .componentes-descripcion').append(
+                ' <div class="container-modulo modulo-unitario-texto"> ' +
+                '<p>Modulo de texto</p>' +
+                '   <input class="input-editar-pagina titulo" placeholder="Título" name="moduloTexto-texto1-id' + contadorModulos + '">' +
+                '    <textarea class="input-editar-pagina textarea parrafo" placeholder="Subtítulo" rows="5" name="moduloTexto-texto2-id' + contadorModulos + '"></textarea> ' +
+                '</div>'
+            );
+        }
+
+        function agregarModuloTripleImagen() {
+            contadorModulos++;
+            $('#form-componentes-descripcion .componentes-descripcion').append(
+                '<div class="container-modulo modulo-triple-imagen"> ' +
+                '<p>Modulo de tres columnas</p>' +
+                '<input class="input-editar-pagina titulo" placeholder="Título de la sección" name="moduloTripleImagen-texto1-id' + contadorModulos + '">' +
+                '<div class="wrapper-modulos clearfix">' +
+                '' +
+                '<div class="modulo">' +
+                '<div class="wrapper-imagen" id_wrapper="a'+ contadorModulos +'">' +
+                '<i class="fa fa-photo icono-imagen"></i>' +
+                        '<div class="wrapper-imagen-fondo"><img class="imagen-fondo"></div>' +
+                '<div class="contenedor-input-imagen btn-primario boton-cambiar-imagen">'+
+                    '<label class="myui-button">'+
+                        '<span >Seleccionar Imágen</span>'+
+                        '<input class="file input-file" type="file" name="moduloTripleImagen-img1-id' + contadorModulos + '" onchange="readURL(this);" id_wrapper="a' + contadorModulos + '">' +
+                   '</label>' +
+                '</div>' +
+                '</div>' +
+                '<input class="input-editar-pagina titulo" placeholder="Subtitulo" name="moduloTripleImagen-texto2-id' + contadorModulos + '">' +
+                '<textarea class="input-editar-pagina textarea parrafo" placeholder="Párrafo" rows="5" name="moduloTripleImagen-texto3-id' + contadorModulos + '"></textarea> ' +
+                '</div>' +
+                '' +
+                '<div class="modulo">' +
+                '<div class="wrapper-imagen" id_wrapper="b'+ contadorModulos +'">' +
+                '<i class="fa fa-photo icono-imagen"></i>' +
+                '<div class="wrapper-imagen-fondo"><img class="imagen-fondo"></div>' +
+                '<div class="contenedor-input-imagen btn-primario boton-cambiar-imagen">'+
+                '<label class="myui-button">'+
+                '<span >Seleccionar Imágen</span>'+
+                '<input class="file input-file" type="file" name="moduloTripleImagen-img1-id' + contadorModulos + '" onchange="readURL(this);" id_wrapper="b' + contadorModulos + '">' +
+                '</label>' +
+                '</div>' +
+                '</div>' +
+                '<input class="input-editar-pagina titulo" placeholder="Subtitulo" name="moduloTripleImagen-texto4-id' + contadorModulos + '">' +
+                '<textarea class="input-editar-pagina textarea parrafo" placeholder="Párrafo" rows="5" name="moduloTripleImagen-texto5-id' + contadorModulos + '"></textarea> ' +
+                '</div>' +
+                '' +
+                '<div class="modulo">' +
+                '<div class="wrapper-imagen" id_wrapper="c'+ contadorModulos +'">' +
+                '<i class="fa fa-photo icono-imagen"></i>' +
+                '<div class="wrapper-imagen-fondo"><img class="imagen-fondo"></div>' +
+                '<div class="contenedor-input-imagen btn-primario boton-cambiar-imagen">'+
+                '<label class="myui-button">'+
+                '<span >Seleccionar Imágen</span>'+
+                '<input class="file input-file" type="file" name="moduloTripleImagen-img1-id' + contadorModulos + '" onchange="readURL(this);" id_wrapper="c' + contadorModulos + '">' +
+                '</label>' +
+                '</div>' +
+                '</div>' +
+                '<input class="input-editar-pagina titulo" placeholder="Título" name="moduloTripleImagen-texto6-id' + contadorModulos + '">' +
+                '<textarea class="input-editar-pagina textarea parrafo" placeholder="Párrafo" rows="5" name="moduloTripleImagen-texto7-id' + contadorModulos + '"></textarea> ' +
+                '</div>' +
+                '' +
+                '</div>' +
+                '</div>'
+            );
+        }
+
+    </script>
+{/block}

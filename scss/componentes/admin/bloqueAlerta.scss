@@ -1,0 +1,33 @@
+.bloque-alerta
+{
+  border-radius: 4px;
+  max-width: 700px;
+  width: auto;
+  border-radius: 4px;
+  padding: 5px 20px;
+  margin: 15px 0;
+  background: #ccc;
+  border: 1px solid #999;
+  display: none;
+  p {
+    font-family: $fp-family !important;
+    font-weight: $bold !important;
+    font-size: 15px !important;
+    color: #999;
+  }
+}
+
+.bloque-alerta.success
+{
+  border: 1px solid #D6E8C7;
+  background: #DFF0D9;
+  p { color: #3E753F !important; }
+}
+.bloque-alerta.error
+{
+  background: $btn-error-bg;
+}
+.bloque-alerta.warning
+{
+  background: $btn-war-bg;
+}

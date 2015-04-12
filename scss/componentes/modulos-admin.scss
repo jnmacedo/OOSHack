@@ -1,0 +1,154 @@
+.container-modulo {
+  @extend .container;
+  width: auto;
+  display: block;
+  padding: 0 !important;
+}
+
+.input-editar-pagina {
+  border: none;
+  margin-bottom: 15px !important;
+  padding: 10px;
+  &.titulo {
+    @extend .h1;
+    margin-bottom: 15px !important;
+  }
+  &.parrafo {
+    @extend .p;
+    background: #eee;
+  }
+}
+
+
+  .wrapper-imagen {
+    height: 170px;
+    background: #ccc;
+    padding: 0;
+
+    .icono-imagen {
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      display: block;
+      width: 60px;
+      font-size: 50px;
+      color: #aaa;
+
+    }
+    .boton-cambiar-imagen {
+      margin: 0;
+      width: 100% !important;
+      background: $btn-pri-bg;
+      color: $btn-pri-f-color;
+      padding: 10px;
+      top:100%;
+    }
+
+    .wrapper-imagen-fondo {
+      padding: 15px 10px;
+      height: 150px;
+      width: 100%;
+      display:none;
+      overflow: hidden;
+    }
+
+    .imagen-fondo {
+      width: 100%;
+      height: auto;
+      max-height: 150px;
+    }
+  }
+
+
+
+
+
+/* Modulo Doble Imgágen */
+/* ************************************* */
+
+.modulo-doble-imagen {
+  .modulo {
+    float: left;
+    width: 50%;
+  }
+  .wrapper-modulos {
+    width: 100%;
+  }
+
+
+  .modulo-imagen {
+    background: #ccc;
+    .wrapper-imagen {
+      height: 250px;
+      padding: 0;
+
+    }
+
+    .icono-imagen {
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 70px;
+      display: block;
+      width: 90px;
+      font-size: 80px;
+      color: #aaa;
+    }
+
+    .boton-cambiar-imagen {
+      margin: 0;
+      width: 100%;
+      background: $btn-pri-bg;
+      color: $btn-pri-f-color;
+      padding: 10px;
+      top:100%;
+    }
+
+  }
+
+  .modulo-texto {
+    padding: 30px 20px;
+    padding-top: 50px;
+    .input-editar-pagina {
+      width: 100%;
+    }
+  }
+
+}
+
+
+
+/* Modulo Triple Imágen */
+/* ************************************* */
+
+.modulo-triple-imagen {
+  padding: 30px 20px !important;
+  .modulo {
+    width: 31%;
+    margin-right: 2%;
+    float: left;
+  }
+
+  .wrapper-imagen {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .input-editar-pagina {
+    width: 100%;
+  }
+
+}
+
+
+
+
+
+/* Modulo Unitario Texto */
+/* ************************************* */
+.modulo-unitario-texto {
+  padding: 30px 30px !important;
+  .input-editar-pagina {
+    width: 100%;
+  }
+}

@@ -1,0 +1,82 @@
+@import "config-admin.scss";
+@import "mixins.scss";
+
+// Inicialización
+// -------------------------
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6, .texto-destacado, .texto-seccion{
+  font-family: $h-f-family;
+  font-weight: $h-f-weight;
+  color: $h-f-color;
+
+
+  // Custom styles
+  text-align: left;
+}
+
+p, .p {
+  font-family: $p-f-family;
+  font-weight: $p-f-weight;
+  color: $p-f-color;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  transition: $link-anim;
+  &:hover {
+    color: lighten($link-color, 15%);
+    text-decoration: none;
+  }
+}
+
+.sub-small {
+  margin: 0;
+  margin-top: 5px;
+  color: lighten($h-f-color, 25%);
+  font-size: 14px;
+}
+
+
+// Proporciones de las textos
+// -------------------------
+
+// Clases por defecto
+
+h1, .h1, .titulo-seccion {
+  @include setFontProportions(25px, 1.2);
+  @include setMargins(0px, 0px);
+
+  @media screen and (max-width: $screen-sm) {
+    @include setFontProportions(22px, 1.1);
+  }
+}
+
+h2, .h2 {
+  @include setFontProportions(23px, 1.1);
+}
+
+h3, .h3 {
+  @include setFontProportions(21px, 1);
+}
+
+h4, .h4 {
+  @include setFontProportions(19px, 1);
+}
+
+h5, .h5 {
+  @include setFontProportions(18px, 1);
+}
+
+h6, .h6 {
+  @include setFontProportions(17px, 1);
+}
+
+p , .p {
+  @include setFontProportions($f-size-base, 1);
+}
+
+.texto-destacado {
+  @include setFontProportions(28px, 1.1);
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <title>MercadoLibre</title>
+
+    {block name="head"}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {* Fonts *}
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+    {* Stylesheets *}
+    <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/OOSHack/public/css/main-admin.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/OOSHack/public/css/iconos.css"/>
+
+    {* Third party *}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    {/block}
+
+</head>
+<body>
+
+
+{block name="navbar"}
+    {include file="navbar-admin.tpl.html"}
+{/block}
+{block name="sidebar-admin"}
+{include file="sidebar-admin.tpl.html"}
+{/block}
+
+<section id="main-content" class="sb-init">
+    {block name="body"}
+    {/block}
+</section>
+
+{block name="footer"}
+<script>
+
+    $('#boton-ampliar').click(function() {
+        if(!$('#boton-ampliar').hasClass('sb-collapsed')) {
+            $('#boton-ampliar').addClass('sb-collapsed');
+            $('#sidebar-admin').addClass('sb-collapsed');
+            $('#main-content').addClass('sb-collapsed');
+            $('#main-content').width( $(window).width() - 60);
+
+        } else {
+            $('#sidebar-admin').addClass('sb-restaurando');
+
+            setTimeout(function() {
+                $('#boton-ampliar').removeClass('sb-collapsed');
+                $('#sidebar-admin').removeClass('sb-restaurando');
+                $('#sidebar-admin').removeClass('sb-collapsed');
+                $('#main-content').removeClass('sb-collapsed');
+                $('#main-content').width( $(window).width() - $('#sidebar-admin').width());
+            }, 700);
+        }
+    });
+
+
+    $('#boton-perfil').click(function() {
+        if(!$('#perfil-ampliado').hasClass('show')) {
+            $('#perfil-ampliado').addClass('show');
+            setTimeout(function() {
+                $('#perfil-ampliado').addClass('visible');
+                $('#boton-perfil').addClass('activo');
+            }, 20);
+        } else {
+            $('#perfil-ampliado').removeClass('visible');
+            $('#boton-perfil').removeClass('activo');
+            setTimeout(function() {
+                $('#perfil-ampliado').removeClass('show');
+            }, 200);
+
+
+        }
+    });
+
+
+    $('.input').each(function() {
+        addFocusInput(this, true);
+        removeFocusInput(this, false);
+
+        $(this).focusin(function() {
+            addFocusInput(this, true);
+        });
+        $(this).focusout(function() {
+            removeFocusInput(this, false);
+        });
+    });
+
+    function addFocusInput(input, addFocus) {
+        if(addFocus || $(input).val().length !=0) {
+            $(input).parent().find('label').addClass('label-focus');
+            $(input).addClass('input-focus');
+        }
+    }
+
+    function removeFocusInput(input, clearFocus) {
+        if(clearFocus || $(input).val().length == 0) {
+            $(input).parent().find('label').removeClass('label-focus');
+            $(input).removeClass('input-focus');
+        }
+    }
+
+    function showBloqueAlerta(destino ,contenido, estado)
+    {
+        var bloqueAlerta = '<div class="bloque-alerta ' + estado + '"><p>' + contenido + '</p></div>';
+        $(destino).append(bloqueAlerta);
+
+        $(destino).find(".bloque-alerta").fadeIn();
+    }
+
+</script>
+{/block}
+
+
+</body>
+</html>

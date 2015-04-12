@@ -1,0 +1,20 @@
+// Tipografía 			
+// -------------------------
+
+@mixin setFontProportions($font-size, $line-height) {
+	font-size: $font-size;
+	line-height: $line-height * 1em;
+}
+
+@mixin setMargins($margin-top, $margin-bottom) {
+	margin-top: $margin-top;
+	margin-bottom: $margin-bottom;
+}
+
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
+}

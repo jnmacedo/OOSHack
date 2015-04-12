@@ -1,0 +1,52 @@
+body {
+  background-color: $c-fondo-body;
+}
+
+#main-content {
+  position: absolute;
+  top: $nb-height;
+  left: $sb-width;
+  right: 0; bottom: 0;
+  width: inherit;
+  z-index: 0;
+  overflow-y: scroll;
+
+  .container, .container-titulo {
+    margin: 5px $dist-a3 0 $dist-a3;
+    padding: $dist-a2;
+    width: auto;
+    border: 1px solid lighten(#E2E2E2, 1%); // Todo-me Agregar esto a la configuracion del scss
+    border-radius: 4px;
+    background: white; // Todo-me Agregar esto a la configuracion del scss
+  }
+
+  .container-titulo {
+    margin-top: $dist-a3;
+    margin-bottom: $dist-a3;
+    padding: 0;
+    background: none;
+    border: none;
+  }
+
+  .container-titulo-error-admin {
+    margin-left: 90px;
+    margin-right: auto;
+    margin-top: 90px;
+    font-size: 36px;
+  }
+
+  .container {
+    margin-bottom: $dist-a3;
+  }
+
+  .container-grid {
+    margin: 5px $dist-a3 0 $dist-a3;
+    padding: $dist-a2;
+  }
+
+  .titulo-seccion {
+    margin: 0;
+  }
+
+}
+

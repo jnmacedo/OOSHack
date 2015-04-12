@@ -1,0 +1,33 @@
+table {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+thead {
+  border-bottom: $t-line-head;
+
+  th {
+    padding-bottom: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: $t-f-color-head;
+    font-size: 14px;
+  }
+}
+
+tbody {
+
+  tr:not(:last-child) {
+    border-bottom: $t-line-body;
+  }
+
+  th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: 500;
+    color: $t-f-color-body;
+    font-size: 14px;
+  }
+}

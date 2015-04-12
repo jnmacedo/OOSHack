@@ -1,0 +1,144 @@
+#navbar-admin {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: $nb-height;
+  background-color: $nb-fondo;
+  z-index: 10;
+
+  border-bottom: $nb-line-bottom;
+
+  .nav {
+
+      ul {
+        list-style: none;
+        margin: 0;
+        margin-top: $dist-a3;
+        margin-bottom: $dist-a3;
+        padding: 0;
+
+      }
+
+      li {
+        float: left;
+        margin-left: $dist-a3;
+      }
+
+      a {
+        color: $nb-icon-color;
+        transition: $nb-icon-anim;
+
+        &:hover {
+          color: $nb-icon-color-hvr;
+        }
+
+      }
+
+      [class^="icon-"], [class*=" icon-"] {
+        display: inline-block;
+        font-size: 1em !important;
+      }
+  }
+
+  .nav-izq {
+      float: left;
+
+      #boton-ampliar {
+        padding-left: $sb-width;
+        transition: all 0.4s $sb-beizer-end;
+      }
+
+      // Clase del boton ampliar
+      .sb-collapsed {
+        padding-left: $sb-width-collapsed;
+        transition: all 0.4s $sb-beizer;
+      }
+  }
+
+  .nav-der {
+
+      float: right;
+      margin-right: $dist-a3;
+
+      .icon-notificacion {
+          margin-top: -3px;
+          font-size: 1.3em !important;
+      }
+
+      #boton-perfil {
+
+          p {
+            margin: 0;
+          }
+
+          * {
+            float: left;
+          }
+
+          .icon-abajo {
+            margin-top: 7px;
+            margin-left: $dist-a1;
+            font-size: 0.5em !important;
+          }
+
+      }
+
+      .activo {
+          p {
+            color: lighten($p-f-color, 20%) !important;
+          }
+          color: lighten($p-f-color, 20%) !important;
+      }
+
+  }
+
+  #perfil-ampliado {
+    position: absolute;
+    left: 100%;
+    margin-top: $nb-height - 2px;
+    margin-left: -200px;
+    width: 200px;
+    height: auto;
+    display: none;
+    opacity: 0;
+    transition: all 0.2s ease-out;
+
+
+    background: $nb-fondo;
+    border: $nb-line-bottom;
+    border-top: none;
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    li:not(:first-child) {
+      border-top: $nb-line-bottom;
+      border-width: 1px;
+    }
+
+    li {
+      padding: 10px;
+      &:hover {
+        background: darken($nb-fondo, 4%);
+      }
+    }
+
+    a {
+      color: $p-f-color;
+      font-size: 14px;
+    }
+
+  }
+
+  .show {
+    display: block !important;
+  }
+
+  .visible {
+    opacity: 1 !important;
+  }
+
+}

@@ -1,0 +1,192 @@
+* {
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+// Breakpoints
+// -------------------------
+
+// Para calculos de proporcion en ems.
+$screen-xs: 				480;
+$screen-sm: 				768;
+$screen-md: 				992;
+$screen-lg: 				1200;
+$screen-xl: 				1560;
+$screen-huge: 				1900;
+
+$screen-xs-px:              #{$screen-xs}px;
+$screen-sm-px:              #{$screen-sm}px;
+$screen-md-px:              #{$screen-md}px;
+$screen-lg-px:              #{$screen-lg}px;
+$screen-xl-px:              #{$screen-xl}px;
+$screen-huge-px:            #{$screen-huge}px;
+
+
+// Tipografía
+// -------------------------
+
+// Fuentes externas
+$google-fonts-1: 			"Source Sans Pro";
+
+// Pesos de fuentes externas
+$light:                     300;
+$regular-weight:            400;
+$semi-bold:                 600;
+$bold:                      700;
+
+$f-size-base:               16px;
+
+// Fuente primaria
+$fp-family:                 $google-fonts-1, "Helvetica Neue", Helvetica, sans-serif;
+$fp-weight:                 $regular-weight;
+$fp-line:                   1.3;
+
+// Colores
+// -------------------------
+
+$color-empresa-importante:  #519A51;
+$color-secundario:          #525252;
+
+// Color de fuentes
+$f-color-oscuro:            #54575B;
+$f-color-medio:             lighten($f-color-oscuro, 10%);
+$f-color-claro:             lighten($f-color-oscuro, 20%);
+
+// Lineas
+$line-color:                #E2E2E2;
+
+
+
+// Botones
+// -------------------------
+
+// Forma
+$btn-border-radius:         2px;
+$btn-padding:               5px;
+
+// Tipografia
+$btn-f-family:              $fp-family;
+$btn-f-weight:              $regular-weight;
+$btn-f-size:                14px;
+$btn-letterspacing:         1px;
+$btn-text-transform:        uppercase;
+
+// Fondos
+$btn-def-bg:                #E8E7E3;
+$btn-pri-bg:                #2B98F0;
+$btn-succ-bg:               #58BE7D;
+$btn-error-bg:              #ED5454;
+$btn-war-bg: #fec000;
+
+// Colores Tipografia
+$btn-def-f-color:           $f-color-medio;
+$btn-pri-f-color:           white;
+$btn-succ-f-color:          white;
+$btn-error-f-color:         white;
+$btn-war-f-color:           white;
+
+$link-color:                #2B98F0;
+
+
+// Transiciones
+// -------------------------
+$link-anim:                 all 0.2s ease-out;
+$btn-anim:                  all 0.2s ease-out;
+
+$sb-beizer:                 cubic-bezier(0.820, 0.005, 0.330, 1.000);
+$sb-beizer-end:             cubic-bezier(0.455, 0.185, 0.065, 0.850);
+$sb-timming-anim:           0.8s;
+
+
+
+// Títulos
+// -------------------------
+$h-f-family:                $fp-family;
+$h-f-weight:                $regular-weight;
+$h-f-color:                 $f-color-oscuro;
+
+
+
+
+// Parrafo
+// -------------------------
+$p-f-family:                $fp-family;
+$p-f-weight:                $regular-weight;
+$p-f-color:                 $f-color-medio;
+
+
+// Tablas
+// -------------------------
+$t-line-head:               1px solid #ddd;
+$t-line-body:               1px solid #eee;
+$t-f-color-head:            $f-color-oscuro;
+$t-f-color-body:            $f-color-medio;
+
+
+// Sidebar
+// -------------------------
+//$sb-fondo:                #2C2E2F;
+$sb-fondo:                  #212935;
+$sb-width:                  260px;
+$sb-width-collapsed:        60px; // Si se edita este parámetro se debe corregir el tamaño en los scripts
+
+$sb-a-f-family:             $fp-family;
+$sb-a-f-weight:             $light;
+$sb-a-f-size:               15px;
+$sb-a-color:                #B1B3B6;
+$sb-a-color-hvr:            lighten($sb-a-color, 30%);
+
+$sb-logo-fondo:             #FFE45C;
+$sb-logo-width:             150px;
+
+
+
+// Navbar
+// -------------------------
+$nb-fondo:                  white;
+$nb-height:                 60px;
+$nb-line-bottom:            1.5px solid $line-color;
+
+$nb-icon-color:             #55585C;
+$nb-icon-color-hvr:         lighten($nb-icon-color, 3%);
+$nb-icon-anim:              all 0.2s ease-in;
+
+
+
+// Contenido
+// -------------------------
+$c-fondo-body:              #EFEFEF;
+$c-fondo-body:              #EFEFEF;
+
+
+
+// Sección - Mensajes
+// -------------------------
+$msj-btn-filtros-bg:            darken($btn-pri-bg, 5%);
+$msj-btn-filtros-f-color:       $btn-pri-f-color;
+$msj-btn-filtros-f-weight:      $light;
+
+$msj-line:                      1px solid darken($line-color, 4%);
+
+$msj-indicador-nuevo-color:     $btn-pri-bg;
+
+$msj-info-nombre-f-color:       $f-color-oscuro;
+
+$msj-error-f-weight:            $light;
+$msj-error-f-color:             $f-color-claro;
+
+
+
+// Formulario
+// -------------------------
+
+$input-border-color:            #CCCCCC;
+$input-border-radius:           4px;
+$input-border-color-focus:      lighten(#4E9A4D, 15%);
+

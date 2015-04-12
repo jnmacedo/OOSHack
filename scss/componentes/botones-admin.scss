@@ -1,0 +1,75 @@
+.btn, [class*="btn-"]{
+  background: $btn-def-bg;
+  color: $btn-def-f-color;
+  width: auto;
+  height: auto;
+  border: none;
+  border-radius: $btn-border-radius;
+
+  font-family: $btn-f-family;
+  font-size: $btn-f-size;
+  font-weight: $btn-f-weight;
+  letter-spacing: $btn-letterspacing;
+  text-transform: $btn-text-transform;
+
+  padding:  $btn-padding ($btn-padding + 5);
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+
+  transition: $btn-anim;
+
+  margin: 5px 0;
+
+  &:hover {
+    color: white;
+    background: lighten($btn-def-bg, 3%);
+  }
+
+}
+
+.btn-big {
+  margin: 20px 0;
+  padding: ($btn-padding + 5) ($btn-padding + 7);
+}
+
+.btn-def {
+  background: $btn-def-bg;
+  color: $btn-def-f-color !important;
+  &:hover {
+    background: lighten($btn-def-bg, 4%);
+  }
+}
+
+.btn-primario {
+  background: $btn-pri-bg;
+  color: $btn-pri-f-color;
+  &:hover {
+    background: lighten($btn-pri-bg, 10%);
+  }
+}
+
+.btn-success {
+  background: $btn-succ-bg;
+  color: $btn-succ-f-color;
+  &:hover {
+    background: lighten($btn-succ-bg, 10%);
+  }
+}
+
+.btn-error {
+  background: $btn-error-bg;
+  color: $btn-error-f-color;
+  &:hover {
+    background: lighten($btn-error-bg, 10%);
+  }
+}
+
+.btn-warning {
+  background: $btn-war-bg;
+  color: $btn-war-f-color;
+  &:hover {
+    background: lighten($btn-war-bg, 10%);
+  }
+}

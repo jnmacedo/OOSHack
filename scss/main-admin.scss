@@ -1,0 +1,32 @@
+@import "kernel/config-admin.scss";
+
+// Dependencias
+@import "dependencias/normalize.scss";
+
+.container {
+  margin: inherit;
+  display: inherit;
+  width: inherit;
+  height: inherit;
+
+}
+
+// Kernel
+@import "kernel/mixins.scss";
+@import "kernel/type-admin.scss";
+
+// Componentes
+@import "componentes/misc.scss";
+@import "componentes/botones-admin.scss";
+@import "componentes/tables-admin.scss";
+@import "componentes/sidebar-admin.scss";
+@import "componentes/navbar-admin.scss";
+@import "componentes/contenido-admin.scss";
+@import "componentes/form-admin.scss";
+@import "componentes/admin/bloqueAlerta";
+@import "componentes/modulos-admin";
+
+
+// Secciones
+@import "secciones/admin/editar-producto";
+

@@ -1,0 +1,80 @@
+// Número Aureo
+$phi: 1.618033988749895;
+
+// Sucesión - Distancias y margenes armónicos
+// an = an-1 * phi
+$dist-a1: 8.4px;
+$dist-a2: $dist-a1 * $phi;
+$dist-a3: $dist-a2 * $phi;
+
+
+
+// Número Aureo
+$phi: 1.618033988749895;
+
+// Sucesión - Distancias y margenes armónicos
+// an = an-1 * phi
+$dist-a1: 8.4px;
+$dist-a2: $dist-a1 * $phi;
+$dist-a3: $dist-a2 * $phi;
+
+.dist-a3 {
+  width: $dist-a3;
+  height: $dist-a3;
+  background: #ffcc00;
+}
+
+.dist-a2 {
+  height: $dist-a2;
+  background: #FF3D7F;
+}
+
+.dist-a1 {
+  height: $dist-a1;
+  background: #00b3ee;
+}
+
+
+.centrar {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.line {
+  display: block;
+  width: 70px;
+  height: sizeLines(0.1);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background: $line-color;
+}
+@media (max-width: $screen-xs-px) {
+  .line {
+    width: 40px;
+  }
+}
+
+.clearfix:after
+{
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.clearfix {
+    display: inline-block;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
